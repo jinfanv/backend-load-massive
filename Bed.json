@@ -1,0 +1,428 @@
+[
+    {
+        "data": {
+            "code": "ad",
+            "lat": 42.5,
+            "lng": 1.5,
+            "bedsTotal": 2.571,
+            "bedsAverage": 1.2855,
+            "populationAverage": 84105.0,
+            "estimatedBedsTotal": 21710.3537,
+            "estimatedBedsAverage": 10855.17685,
+            "bedType": [
+                {
+                    "icu": 0.071,
+                    "percentage": 2.761571373006612,
+                    "population": 83747.0,
+                    "estimatedForPopulation": 594.6036999999999,
+                    "source": "icm-journal",
+                    "sourceUrl": "https://link.springer.com/article/10.1007/s00134-012-2627-8",
+                    "year": 2011
+                },
+                {
+                    "total": 2.5,
+                    "percentage": 97.23842862699338,
+                    "population": 84463.0,
+                    "estimatedForPopulation": 21115.75,
+                    "source": "wdi",
+                    "sourceUrl": "https://data.worldbank.org/indicator/SH.MED.BEDS.ZS",
+                    "year": 2009
+                }
+            ]
+        }
+    },
+    {
+        "data": {
+            "code": "ae",
+            "lat": 24.0,
+            "lng": 54.0,
+            "bedsTotal": 1.2,
+            "bedsAverage": 1.2,
+            "populationAverage": 9197910.0,
+            "estimatedBedsTotal": 1103749.2,
+            "estimatedBedsAverage": 1103749.2,
+            "bedType": [
+                {
+                    "total": 1.2,
+                    "percentage": 100.0,
+                    "population": 9197910.0,
+                    "estimatedForPopulation": 1103749.2,
+                    "source": "wdi",
+                    "sourceUrl": "https://data.worldbank.org/indicator/SH.MED.BEDS.ZS",
+                    "year": 2013
+                }
+            ]
+        }
+    },
+    {
+        "data": {
+            "code": "af",
+            "lat": 33.0,
+            "lng": 65.0,
+            "bedsTotal": 0.5,
+            "bedsAverage": 0.5,
+            "populationAverage": 34413603.0,
+            "estimatedBedsTotal": 1720680.15,
+            "estimatedBedsAverage": 1720680.15,
+            "bedType": [
+                {
+                    "total": 0.5,
+                    "percentage": 100.0,
+                    "population": 34413603.0,
+                    "estimatedForPopulation": 1720680.15,
+                    "source": "wdi",
+                    "sourceUrl": "https://data.worldbank.org/indicator/SH.MED.BEDS.ZS",
+                    "year": 2015
+                }
+            ]
+        }
+    },
+    {
+        "data": {
+            "code": "ag",
+            "lat": 17.05,
+            "lng": -61.8,
+            "bedsTotal": 3.8,
+            "bedsAverage": 3.8,
+            "populationAverage": 92562.0,
+            "estimatedBedsTotal": 35173.56,
+            "estimatedBedsAverage": 35173.56,
+            "bedType": [
+                {
+                    "total": 3.8,
+                    "percentage": 100.0,
+                    "population": 92562.0,
+                    "estimatedForPopulation": 35173.56,
+                    "source": "wdi",
+                    "sourceUrl": "https://data.worldbank.org/indicator/SH.MED.BEDS.ZS",
+                    "year": 2014
+                }
+            ]
+        }
+    },
+    {
+        "data": {
+            "code": "al",
+            "lat": 41.0,
+            "lng": 20.0,
+            "bedsTotal": 2.9,
+            "bedsAverage": 2.9,
+            "populationAverage": 2895092.0,
+            "estimatedBedsTotal": 839576.6799999999,
+            "estimatedBedsAverage": 839576.6799999999,
+            "bedType": [
+                {
+                    "total": 2.9,
+                    "percentage": 100.0,
+                    "population": 2895092.0,
+                    "estimatedForPopulation": 839576.6799999999,
+                    "source": "wdi",
+                    "sourceUrl": "https://data.worldbank.org/indicator/SH.MED.BEDS.ZS",
+                    "year": 2013
+                }
+            ]
+        }
+    },
+    {
+        "data": {
+            "code": "am",
+            "lat": 40.0,
+            "lng": 45.0,
+            "bedsTotal": 4.2,
+            "bedsAverage": 4.2,
+            "populationAverage": 2925553.0,
+            "estimatedBedsTotal": 1228732.26,
+            "estimatedBedsAverage": 1228732.26,
+            "bedType": [
+                {
+                    "total": 4.2,
+                    "percentage": 100.0,
+                    "population": 2925553.0,
+                    "estimatedForPopulation": 1228732.26,
+                    "source": "wdi",
+                    "sourceUrl": "https://data.worldbank.org/indicator/SH.MED.BEDS.ZS",
+                    "year": 2015
+                }
+            ]
+        }
+    },
+    {
+        "data": {
+            "code": "ao",
+            "lat": -12.5,
+            "lng": 18.5,
+            "bedsTotal": 0.8,
+            "bedsAverage": 0.8,
+            "populationAverage": 19433602.0,
+            "estimatedBedsTotal": 1554688.1600000001,
+            "estimatedBedsAverage": 1554688.1600000001,
+            "bedType": [
+                {
+                    "total": 0.8,
+                    "percentage": 100.0,
+                    "population": 19433602.0,
+                    "estimatedForPopulation": 1554688.1600000001,
+                    "source": "wdi",
+                    "sourceUrl": "https://data.worldbank.org/indicator/SH.MED.BEDS.ZS",
+                    "year": 2005
+                }
+            ]
+        }
+    },
+    {
+        "data": {
+            "code": "ar",
+            "lat": -34.0,
+            "lng": -64.0,
+            "bedsTotal": 5.0,
+            "bedsAverage": 5.0,
+            "populationAverage": 42669500.0,
+            "estimatedBedsTotal": 21334750.0,
+            "estimatedBedsAverage": 21334750.0,
+            "bedType": [
+                {
+                    "total": 5.0,
+                    "percentage": 100.0,
+                    "population": 42669500.0,
+                    "estimatedForPopulation": 21334750.0,
+                    "source": "wdi",
+                    "sourceUrl": "https://data.worldbank.org/indicator/SH.MED.BEDS.ZS",
+                    "year": 2014
+                }
+            ]
+        }
+    },
+    {
+        "data": {
+            "code": "at",
+            "lat": 47.33,
+            "lng": 13.33,
+            "bedsTotal": 13.648,
+            "bedsAverage": 3.412,
+            "populationAverage": 8691924.5,
+            "estimatedBedsTotal": 11997706.138,
+            "estimatedBedsAverage": 2999426.5345,
+            "bedType": [
+                {
+                    "acute": 5.45,
+                    "percentage": 39.93259085580305,
+                    "population": 8797566.0,
+                    "estimatedForPopulation": 4794673.470000001,
+                    "source": "oecd",
+                    "sourceUrl": "https://data.oecd.org/healtheqt/hospital-beds.htm",
+                    "year": 2017
+                },
+                {
+                    "icu": 0.218,
+                    "percentage": 1.597303634232122,
+                    "population": 8375000.0,
+                    "estimatedForPopulation": 182575.0,
+                    "source": "icm-journal",
+                    "sourceUrl": "https://link.springer.com/article/10.1007/s00134-012-2627-8",
+                    "year": 2011
+                },
+                {
+                    "psychiatric": 0.61,
+                    "percentage": 4.469519343493552,
+                    "population": 8797566.0,
+                    "estimatedForPopulation": 536651.526,
+                    "source": "oecd",
+                    "sourceUrl": "https://data.oecd.org/healtheqt/hospital-beds.htm",
+                    "year": 2017
+                },
+                {
+                    "total": 7.37,
+                    "percentage": 54.00058616647128,
+                    "population": 8797566.0,
+                    "estimatedForPopulation": 6483806.142,
+                    "source": "oecd",
+                    "sourceUrl": "https://data.oecd.org/healtheqt/hospital-beds.htm",
+                    "year": 2017
+                }
+            ]
+        }
+    },
+    {
+        "data": {
+            "code": "au",
+            "lat": -27.0,
+            "lng": 133.0,
+            "bedsTotal": 4.26,
+            "bedsAverage": 2.13,
+            "populationAverage": 24190907.0,
+            "estimatedBedsTotal": 10305326.382,
+            "estimatedBedsAverage": 5152663.191,
+            "bedType": [
+                {
+                    "psychiatric": 0.42,
+                    "percentage": 9.859154929577466,
+                    "population": 24190907.0,
+                    "estimatedForPopulation": 1016018.0939999999,
+                    "source": "oecd",
+                    "sourceUrl": "https://data.oecd.org/healtheqt/hospital-beds.htm",
+                    "year": 2016
+                },
+                {
+                    "total": 3.84,
+                    "percentage": 90.14084507042254,
+                    "population": 24190907.0,
+                    "estimatedForPopulation": 9289308.287999999,
+                    "source": "oecd",
+                    "sourceUrl": "https://data.oecd.org/healtheqt/hospital-beds.htm",
+                    "year": 2016
+                }
+            ]
+        }
+    },
+    {
+        "data": {
+            "code": "az",
+            "lat": 40.5,
+            "lng": 47.5,
+            "bedsTotal": 4.7,
+            "bedsAverage": 4.7,
+            "populationAverage": 9416801.0,
+            "estimatedBedsTotal": 4425896.470000001,
+            "estimatedBedsAverage": 4425896.470000001,
+            "bedType": [
+                {
+                    "total": 4.7,
+                    "percentage": 100.0,
+                    "population": 9416801.0,
+                    "estimatedForPopulation": 4425896.470000001,
+                    "source": "wdi",
+                    "sourceUrl": "https://data.worldbank.org/indicator/SH.MED.BEDS.ZS",
+                    "year": 2013
+                }
+            ]
+        }
+    },
+    {
+        "data": {
+            "code": "ba",
+            "lat": 44.0,
+            "lng": 18.0,
+            "bedsTotal": 3.5,
+            "bedsAverage": 3.5,
+            "populationAverage": 3542605.0,
+            "estimatedBedsTotal": 1239911.75,
+            "estimatedBedsAverage": 1239911.75,
+            "bedType": [
+                {
+                    "total": 3.5,
+                    "percentage": 100.0,
+                    "population": 3542605.0,
+                    "estimatedForPopulation": 1239911.75,
+                    "source": "wdi",
+                    "sourceUrl": "https://data.worldbank.org/indicator/SH.MED.BEDS.ZS",
+                    "year": 2013
+                }
+            ]
+        }
+    },
+    {
+        "data": {
+            "code": "bb",
+            "lat": 13.17,
+            "lng": -59.53,
+            "bedsTotal": 5.8,
+            "bedsAverage": 5.8,
+            "populationAverage": 284825.0,
+            "estimatedBedsTotal": 165198.5,
+            "estimatedBedsAverage": 165198.5,
+            "bedType": [
+                {
+                    "total": 5.8,
+                    "percentage": 100.0,
+                    "population": 284825.0,
+                    "estimatedForPopulation": 165198.5,
+                    "source": "wdi",
+                    "sourceUrl": "https://data.worldbank.org/indicator/SH.MED.BEDS.ZS",
+                    "year": 2014
+                }
+            ]
+        }
+    },
+    {
+        "data": {
+            "code": "bd",
+            "lat": 24.0,
+            "lng": 90.0,
+            "bedsTotal": 0.807,
+            "bedsAverage": 0.4035,
+            "populationAverage": 157978138.0,
+            "estimatedBedsTotal": 12612292.080000002,
+            "estimatedBedsAverage": 6306146.040000001,
+            "bedType": [
+                {
+                    "icu": 0.006999999999999999,
+                    "percentage": 0.8674101610904584,
+                    "population": 159700000.0,
+                    "estimatedForPopulation": 111790.0,
+                    "source": "ccm-journal",
+                    "sourceUrl": "https://www.researchgate.net/figure/Number-of-critical-care-beds-per-100-000-population_fig1_338520008",
+                    "year": 2017
+                },
+                {
+                    "total": 0.8,
+                    "percentage": 99.13258983890954,
+                    "population": 156256276.0,
+                    "estimatedForPopulation": 12500502.080000002,
+                    "source": "wdi",
+                    "sourceUrl": "https://data.worldbank.org/indicator/SH.MED.BEDS.ZS",
+                    "year": 2015
+                }
+            ]
+        }
+    },
+    {
+        "data": {
+            "code": "be",
+            "lat": 50.83,
+            "lng": 4.0,
+            "bedsTotal": 12.139,
+            "bedsAverage": 3.03475,
+            "populationAverage": 11324942.0,
+            "estimatedBedsTotal": 13871940.688,
+            "estimatedBedsAverage": 3467985.172,
+            "bedType": [
+                {
+                    "acute": 4.98,
+                    "percentage": 41.02479611170608,
+                    "population": 11433256.0,
+                    "estimatedForPopulation": 5693761.488,
+                    "source": "oecd",
+                    "sourceUrl": "https://data.oecd.org/healtheqt/hospital-beds.htm",
+                    "year": 2018
+                },
+                {
+                    "icu": 0.159,
+                    "percentage": 1.3098278276629047,
+                    "population": 11000000.0,
+                    "estimatedForPopulation": 174900.0,
+                    "source": "icm-journal",
+                    "sourceUrl": "https://link.springer.com/article/10.1007/s00134-012-2627-8",
+                    "year": 2011
+                },
+                {
+                    "psychiatric": 1.36,
+                    "percentage": 11.203558777494028,
+                    "population": 11433256.0,
+                    "estimatedForPopulation": 1554922.816,
+                    "source": "oecd",
+                    "sourceUrl": "https://data.oecd.org/healtheqt/hospital-beds.htm",
+                    "year": 2018
+                },
+                {
+                    "total": 5.64,
+                    "percentage": 46.461817283137,
+                    "population": 11433256.0,
+                    "estimatedForPopulation": 6448356.384,
+                    "source": "oecd",
+                    "sourceUrl": "https://data.oecd.org/healtheqt/hospital-beds.htm",
+                    "year": 2018
+                }
+            ]
+        }
+    }
+]
