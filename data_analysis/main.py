@@ -1,10 +1,10 @@
 import sys
 import json
-from beds_data import BedsRecord, BedTypesData
-from enum import Enum
-from api import sendBedsData
 import pandas as pd
 import traceback
+from datatypes import BedsRecord, BedTypesData
+from enum import Enum
+from api import sendBedsData
 
 
 class BedsFilter(Enum):
@@ -59,7 +59,12 @@ def prompt_user(message):
 def filter_beds(category, sampling = False):
     """
     Returns the dataset (pandas.core.frame.DataFrame) filtered by the input
-    filter category. Optionally
+    filter category. If the sampling parameter is set to true, only a number
+    of records will be taken from the dataset according to the value of the
+    BedsFilter.BED_RECORDS_NUMBER constant.
+    The returned structure is a list with three elements:
+    [0]: General structure for country information
+    [1]: Information for bed types
     """
     try:
         data = pd.read_csv(BedsFilter.BEDS_FILENAME.value)
@@ -95,10 +100,14 @@ def validate_option(option, min_value, max_value):
 
 def pack_records(country_data, limit = None):
     """
-    From a filtered grouped dataframe, return a list of BedsRecords. If a limit
-    is entered, only return the first elements up to one before that limit
+    From a filtered grouped dataframe, return a list of BedsRecords and 
+    BedsTypesData. If a limit is entered, only return the first elements up to
+    one before that limit
     """
-    records = []
+    result = []
+
+    country_records = []
+    type_records = []
     
     for country_name, country_group in country_data:     
         beds_average = country_group['beds'].mean()
@@ -108,11 +117,11 @@ def pack_records(country_data, limit = None):
         iso_code = ""
 
         if (type(country_name) is tuple):
-            iso_code = country_name[1]
+            iso_code = country_name[1].lower()
         else:
-            iso_code = country_name
+            iso_code = country_name.lower()
 
-        new_record = BedsRecord(code = iso_code.lower(),
+        new_record = BedsRecord(code = iso_code,
                                 lat = float(country_group['lat'].values[0]),
                                 lng = float(country_group['lng'].values[0]),
                                 beds_total = float(beds_total),
@@ -133,7 +142,8 @@ def pack_records(country_data, limit = None):
             source_url = type_group['source_url'].values[0]
             year = type_group['year'].values[0]
 
-            new_type_data = BedTypesData(type_name = type_name.lower(),
+            new_type_data = BedTypesData(code = iso_code,
+                                         type_name = type_name.lower(),
                                          count = type_bed_count,
                                          percentage = type_percentage,
                                          estimated_for_population = \
@@ -143,21 +153,21 @@ def pack_records(country_data, limit = None):
                                          source_url = source_url,
                                          year = int(year))
 
-            new_record.add_bed_type(new_type_data.getStructure())
-
             estimated_beds_total += type_estimated
             types_number += 1
+
+            type_records.append(new_type_data)
 
         new_record.set_estimated_beds_total(estimated_beds_total)
         new_record.set_estimated_beds_average(estimated_beds_total,
                                               types_number)
 
-        records.append(new_record)
+        country_records.append(new_record)
 
     if (limit != None):
-        return records[:limit]
-    else:
-        return records
+        country_records = country_records[:limit]
+    
+    return [country_records, type_records]
 
 
 def process_without_filter(data):
@@ -181,70 +191,114 @@ def process_by_scale_capacity(data, ascending = False):
     return pack_records(country_data, TOP_N)
 
 
-def write_to_file(jsonData, filterIndex):
-    """
-    Writes the entered json into a file named according to the chosen filter
-    """
-    name = BedsFilter(filterIndex).name
-    filename = BedsFilter.EXPORT_FILENAME.value.replace("#", name)
+def write_to_file(data, filename):
     try:
         with open(filename, 'w') as export_file:
-            export_file.write(jsonData)
+            export_file.write(data)
         print(f'Wrote the results on {filename}!')
     except OSError as e:
         print(f'Could not write {filename}!')
         print(e)
 
 
-def main():
+def write_data(general_json, types_json, filterIndex):
     """
-    Program entry point
+    Writes the entered json into a file named according to the chosen filter
+    """
+    general_name = BedsFilter(filterIndex).name + '_GENERAL'
+    types_name = BedsFilter(filterIndex).name + '_TYPES'
+    general_filename = BedsFilter.EXPORT_FILENAME.value.replace("#", 
+                                                                general_name)
+    types_filename = BedsFilter.EXPORT_FILENAME.value.replace("#", types_name)
+    
+    write_to_file(general_json, general_filename)
+    write_to_file(types_json, types_filename)
+
+
+def load_records(filter_option, cli_mode = False, send_request = False):
+    records = filter_beds(filter_option)
+
+    general_json_list = [r.to_json()
+                            for r in records[0]]
+    types_json_list = [r.to_json()
+                        for r in records[1]]
+
+    general_data = json.dumps(general_json_list, indent = 4)
+    types_data = json.dumps(types_json_list, indent = 4)
+
+    api_data = [general_data, types_data]
+
+    write_data(general_data, types_data, filter_option)
+
+    if (cli_mode):
+        user_input = prompt_user(MENU[3])
+        answer = user_input.lower() == 'yes'
+        
+        if (answer):
+            sendBedsData(api_data)
+
+    elif (send_request):
+        sendBedsData(api_data)
+
+
+def main_cli():
+    """
+    Program entry point without execution arguments
     """
     finished = False
     dataset_option = 0
     filter_option = 0
         
     while (not finished):
-        filter_navigation = True
+        filter_navigation = True        
+        dataset_option = int(prompt_user(MENU[0]))
+        
+        if (validate_option(dataset_option, 0, 2)):
+            if (dataset_option == 0):
+                finished = True 
+            elif (dataset_option == 1):
+                while (filter_navigation):
+                    filter_option = int(prompt_user(MENU[1]))
 
-        try:
-            dataset_option = int(prompt_user(MENU[0]))
-            
-            if (validate_option(dataset_option, 0, 2)):
-                if (dataset_option == 0):
-                    finished = True 
-                elif (dataset_option == 1):
-                    while (filter_navigation):
-                        filter_option = int(prompt_user(MENU[1]))
+                    if (validate_option(filter_option, 0, 5)):
+                        if (filter_option == 0):
+                            filter_navigation = False
+                        else:
+                            load_records(filter_option, cli_mode = True)
 
-                        if (validate_option(filter_option, 0, 5)):
-                            if (filter_option == 0):
-                                filter_navigation = False
-                            else:
-                                records = filter_beds(filter_option)
+            else:
+                raise Exception("Not implemented yet")
 
-                                api_json_list = [json.dumps(r.toJson()) 
-                                                 for r in records]
 
-                                json_list = [r.toJson() for r in records]
+def main_args(send_request = False):
+    """
+    Program entry point with execution arguments
+    """    
+    dataset_option = int(sys.argv[1])
 
-                                json_data = json.dumps(json_list, indent = 4)
+    if (validate_option(dataset_option, 1, 2)):
+        if (dataset_option == 1):
+            filter_option = int(sys.argv[2])
 
-                                write_to_file(json_data, filter_option)
-                                
-                                user_input = prompt_user(MENU[3])
-
-                                if (user_input.lower() == 'yes'):
-                                    sendBedsData(api_json_list)
-
-                else:
-                    raise Exception("Not implemented yet")
-        except ValueError:
-            print('\nSorry, only numbers are valid! Try again\n')
-        except Exception as e:
-            traceback.print_exc()
-            sys.exit(f'\nUnexpected error! Exiting.\nThe error: ** {e} ** \n')
+            if (validate_option(filter_option, 1, 5)):
+                load_records(filter_option, send_request = send_request)
+        else:
+            raise Exception("Not implemented yet")
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        if (len(sys.argv) == 1):
+            main_cli()
+        elif (len(sys.argv) == 3):
+            main_args()
+        elif (len(sys.argv) == 4):
+            main_args(sys.argv[3] == 'post')
+        else:
+            raise Exception('Not enough arguments. Usage: python main.py' \
+            +' <index of dataset> <index of filter>')
+    except ValueError:
+        print('\nSorry, only numbers are valid! Try again\n')
+    except Exception as e:
+        traceback.print_exc()
+        sys.exit(f'\nUnexpected error! Exiting.\nThe error: ** {e} ** \n')
