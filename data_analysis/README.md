@@ -56,7 +56,7 @@ Bed capacity's filters:
 7. Top 10 countries with lower average bed capacity (scale)
 8. Top 10 countries with higher average bed capacity (estimated)
 9. Top 10 countries with lower average bed capacity (estimated)
-10. [In Progress...]
+10. General dataset statistics
 
 Measures and restrictions filters:
 
@@ -67,4 +67,4 @@ Finally, the optional argument 'post' can be added to send a request to the defi
 
 ## Usage
 
-Activate the virtual environment and run the program using a CLI. Follow the instructions that appear on screen
+Activate the virtual environment and run the program using a CLI. Follow the instructions that appear on screen (only shown in argumentless CLI mode)
