@@ -26,6 +26,8 @@ function createCountryFilter(country, beds, restrictions) {
 
 async function createCountryTopScaleFilter(data) {
   let topData = await CountryFilter(data);
+  console.log(topData);
+
   createColecction(topData, "CountryTopScale");
 }
 
@@ -61,6 +63,44 @@ async function createCountryTopAvgEstimateFilter(data) {
 async function createCountryBottomAvgEstimateFilter(data) {
   let BottomData = await CountryFilter(data);
   createColecction(BottomData, "CountryBottomAvgEstimate");
+}
+
+// Dataset Measure
+
+async function createGeneralMeasureFilter(data) {
+  createColecction(data, "GeneralMeasureCountry");
+}
+
+async function createGeneralTopMeasureFilter(data) {
+  createColecction(data, "GeneralTopMeasureCountry");
+}
+
+async function createGeneralBottomMeasureFilter(data) {
+  createColecction(data, "GeneralBottomMeasureCountry");
+}
+
+async function createMeasureTopFilter(data) {
+  createColecction(data, "MeasureTopMeasureCountry");
+}
+
+async function createMeasureBottomFilter(data) {
+  createColecction(data, "MeasureBottomMeasureCountry");
+}
+
+async function createGeneralTopMeasureRecordFilter(data) {
+  createColecction(data, "GeneralTopMeasureRecordCountry");
+}
+
+async function createGeneralBottomMeasureRecordFilter(data) {
+  createColecction(data, "GeneralBottomMeasureRecordCountry");
+}
+
+async function createMeasureTopRecordFilter(data) {
+  createColecction(data, "MeasureTopMeasureRecordCountry");
+}
+
+async function createMeasureBottomRecordFilter(data) {
+  createColecction(data, "MeasureBottomMeasureRecordCountry");
 }
 
 //Incluye Beds - Restrictions for TOP COUNTRIES SCALE
@@ -115,4 +155,13 @@ module.exports = {
   createCountryBottomAvgScalaFilter,
   createCountryTopAvgEstimateFilter,
   createCountryBottomAvgEstimateFilter,
+  createGeneralMeasureFilter,
+  createGeneralTopMeasureFilter,
+  createGeneralBottomMeasureFilter,
+  createMeasureTopFilter,
+  createMeasureBottomFilter,
+  createGeneralTopMeasureRecordFilter,
+  createGeneralBottomMeasureRecordFilter,
+  createMeasureTopRecordFilter,
+  createMeasureBottomRecordFilter,
 };

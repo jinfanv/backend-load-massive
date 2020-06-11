@@ -12,10 +12,20 @@ const {
   createCountryBottomAvgScalaFilter,
   createCountryTopAvgEstimateFilter,
   createCountryBottomAvgEstimateFilter,
+  createGeneralMeasureFilter,
+  createGeneralTopMeasureFilter,
+  createGeneralBottomMeasureFilter,
+  createMeasureTopFilter,
+  createMeasureBottomFilter,
+  createGeneralTopMeasureRecordFilter,
+  createGeneralBottomMeasureRecordFilter,
+  createMeasureTopRecordFilter,
+  createMeasureBottomRecordFilter
 } = require("./load-massive/filter");
 
-insertCountry()
-insertTopCountry();
+//insertCountry()
+//insertTopCountry();
+insertGenerarMeasure();
 // Lee todos los documentos del tipo TYPE para ser agregados primero a la Base de datos
 
 async function insertCountry() {
@@ -45,46 +55,75 @@ function insertTopCountry() {
     "BOTTOM_COUNTRIES_SCALE_GENERAL.json",
     "beds"
   );
-  createCountryBottomScaleFilter(countryBottomScale)
+  createCountryBottomScaleFilter(countryBottomScale);
   //  (4) Top 10 countries with highest bed capacity (estimated)
 
   let countryTopEstime = readDocument(
     "TOP_COUNTRIES_ESTIMATE_GENERAL.json",
     "beds"
   );
-  createCountryTopEstimateFilter(countryTopEstime)
+  createCountryTopEstimateFilter(countryTopEstime);
   //  (5) Top 10 countries with lowest bed capacity (estimated)
 
   let countryBottomEstime = readDocument(
     "BOTTOM_COUNTRIES_ESTIMATE_GENERAL.json",
     "beds"
   );
-  createCountryBottomEstimateFilter(countryBottomEstime)
+  createCountryBottomEstimateFilter(countryBottomEstime);
   //  (6) Top 10 countries with highest average bed capacity (scale)
   let countryTopAvgScale = readDocument(
     "TOP_COUNTRIES_AVG_SCALE_GENERAL.json",
     "beds"
   );
-  createCountryTopAvgScalaFilter(countryTopAvgScale)
+  createCountryTopAvgScalaFilter(countryTopAvgScale);
   //  (7) Top 10 countries with lowest average bed capacity (scale)
   let countryBottomAvgScale = readDocument(
     "BOTTOM_COUNTRIES_AVG_SCALE_GENERAL.json",
     "beds"
   );
-  createCountryBottomAvgScalaFilter(countryBottomAvgScale)
+  createCountryBottomAvgScalaFilter(countryBottomAvgScale);
   //  (8) Top 10 countries with highest average bed capacity (estimated)
   let countryTopAvgEstimate = readDocument(
     "TOP_COUNTRIES_AVG_ESTIMATE_GENERAL.json",
     "beds"
   );
-  createCountryTopAvgEstimateFilter(countryTopAvgEstimate)
+  createCountryTopAvgEstimateFilter(countryTopAvgEstimate);
   //  (9) Top 10 countries with lowest average bed capacity (estimated)
   let countryBottomAvgEstimate = readDocument(
     "BOTTOM_COUNTRIES_AVG_ESTIMATE_GENERAL.json",
     "beds"
   );
-  createCountryBottomAvgEstimateFilter(countryBottomAvgEstimate)
+  createCountryBottomAvgEstimateFilter(countryBottomAvgEstimate);
 }
+
+function insertGenerarMeasure() {
+  let general = readDocument("GENERAL_COUNTRY_INFORMATION_GENERAL.json", "measures");
+
+  let generalTop = readDocument("TOP_COUNTRIES_MEASURE_COUNT_GENERAL.json", "measures");
+  let measuresTop = readDocument("TOP_COUNTRIES_MEASURE_COUNT_MEASURES.json", "measures");
+
+  let generalBottom = readDocument("BOTTOM_COUNTRIES_MEASURE_COUNT_GENERAL.json", "measures");
+  let measuresBottom = readDocument("BOTTOM_COUNTRIES_MEASURE_COUNT_MEASURES.json", "measures");
+
+  let generalTopRecords = readDocument("TOP_COUNTRIES_RECORDS_COUNT_GENERAL.json", "measures");
+  let measuresTopRecords = readDocument("TOP_COUNTRIES_RECORDS_COUNT_MEASURES.json", "measures");
+
+  let generalBottomRecords = readDocument("TOP_COUNTRIES_RECORDS_COUNT_GENERAL.json", "measures");
+  let measuresBottomRecords = readDocument("TOP_COUNTRIES_RECORDS_COUNT_MEASURES.json", "measures");
+
+  createGeneralMeasureFilter(general);
+  createGeneralTopMeasureFilter(generalTop)
+  createGeneralBottomMeasureFilter(generalBottom)
+  createMeasureTopFilter(measuresTop)
+  createMeasureBottomFilter(measuresBottom)
+
+  createGeneralTopMeasureRecordFilter(generalTopRecords)
+  createGeneralBottomMeasureRecordFilter(measuresTopRecords)
+  createMeasureTopRecordFilter(generalBottomRecords)
+  createMeasureBottomRecordFilter(measuresBottomRecords)
+}
+
+
 
 function readDocument(document, folder) {
   URL = `${__dirname}/data_analysis/export/${folder}/${document}`;
